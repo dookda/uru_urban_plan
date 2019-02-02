@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      ผังเมืองรวมชุมชนหัวดง
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="gotoPlace()">
+        <ion-icon name="search"></ion-icon>เลือกสถานที่
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div id="map" class="map"></div>
+
+  <div>
+    <button ion-fab color="primary" id="feb" style="bottom: 30%" (click)="showLocation()">
+      <ion-icon name="locate"></ion-icon>
+    </button>
+
+    <button ion-fab color="primary" id="feb" style="bottom: 20%" (click)="gotoPlace()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+
+    <button ion-fab color="primary" id="feb" style="bottom: 10%" (click)="gotoComment()">
+      <ion-icon name="list-box"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>

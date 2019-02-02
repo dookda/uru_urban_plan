@@ -1,0 +1,7 @@
+{
+  "name": "urban_plan",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

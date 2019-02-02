@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>reply</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal('no')">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-icon name="text" item-start large></ion-icon>
+    <p>{{comment}}</p>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>ข้อความ</ion-label>
+    <ion-textarea [(ngModel)]="txt"></ion-textarea>
+  </ion-item>
+  <p></p>
+  <p></p>
+
+  <button ion-button block (click)="sendReply()">ตอบ</button>
+</ion-content>

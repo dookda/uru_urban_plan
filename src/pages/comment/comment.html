@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>comment</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <ion-list>
+    <ion-item-sliding *ngFor="let c of comment">
+      <ion-item>
+        <ion-card>
+          <img [src]="urlImg" (click)="show()" />
+          <ion-fab right bottom>
+            <button ion-fab>
+              <ion-icon name="brush"></ion-icon>
+            </button>
+          </ion-fab>
+          <div class="card-title">Amsterdam</div>
+
+        </ion-card>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list> -->
+
+  <ion-card *ngFor="let c of comment">
+    <!-- <ion-card-content>{{c.uname}}</ion-card-content> -->
+    <ion-item>
+      <ion-icon name="text" item-start large></ion-icon>
+      <p>{{c.ucomment}}</p>
+      <p>พื้นที่: {{c.no}}</p>
+    </ion-item>
+
+    <ion-item>
+
+      <ion-icon name="person" item-start></ion-icon>
+      <span item-start>คุณ {{c.uname}}</span>
+      <ion-icon name="call" item-start></ion-icon>
+      <span item-start>{{c.uphone}}</span>
+      <!-- <button ion-button icon-start clear>
+        <ion-icon name="call"></ion-icon>
+        {{c.uphone}}
+      </button> -->
+      <button ion-button item-end clear (click)="gotoReply(c)">
+        <ion-icon name="undo"></ion-icon>
+        ตอบกลับ
+      </button>
+    </ion-item>
+
+
+
+    <div padding *ngIf="c.answer">
+      <hr>
+      <p>ตอบ: {{c.answer}}</p>
+    </div>
+
+    <!-- <ion-item>
+      <button ion-button icon-start clear item-end>
+        <ion-icon name="call"></ion-icon>
+        ตอบกลับ
+      </button>
+    </ion-item> -->
+
+  </ion-card>
+</ion-content>

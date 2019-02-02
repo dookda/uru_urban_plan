@@ -1,0 +1,83 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>desc</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">
+        <h1>รายละเอียดของข้อมูลที่เลือก</h1>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>list: {{list}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>no: {{no}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>rmk: {{rmk}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>type: {{type}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>area: {{area | number: '1.2'}} ตารางเมตร</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+  <button ion-button icon-start (click)="gotoAddition()">
+    <ion-icon name="bookmark"></ion-icon>
+    รายละเอียดเพิ่มเติม
+  </button>
+
+  <!-- <button ion-button icon-start color="secondary" (click)="gotoComment()">
+    <ion-icon name="paper"></ion-icon>
+    ดูความคิดเห็นเกี่ยวกับพื้นที่
+  </button> -->
+  <hr>
+
+  <p></p>
+  <p></p>
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="green">
+        <h1>แสดงความคิดเห็นเกี่ยวกับพื้นที่นี้</h1>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label color="green" floating>ความคิดเห็น</ion-label>
+      <ion-input [(ngModel)]="ucomment">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="green" floating>ชื่อผู้ให้ข้อมูล</ion-label>
+      <ion-input [(ngModel)]="uname">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="green" floating>หมายเลขโทรศัพท์</ion-label>
+      <ion-input [(ngModel)]="uphone">
+      </ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button icon-start color="green" (click)="addUrbanComment()">
+    <ion-icon name="paper-plane"></ion-icon>
+    ส่งความคิดเห็น
+  </button>
+</ion-content>
