@@ -25,4 +25,33 @@ page-home {
     background-size: 26px 26px;
   }
 
+  @font-face {
+    font-family: 'Kanit';
+    src: url('../assets/fonts/Kanit-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .kanit {
+    font-family: 'Kanit';
+
+  }
+
+  .kanit-w {
+    font-family: 'Kanit';
+  }
+
+  .scroll-content {
+    background: #1e1e1e;
+  }
+
+  // ion-navbar .toolbar-background {
+  //   background: transparent;
+  //   background: rgb(3, 125, 196) !important;
+  // }
+
+  // ion-content .scroll-content {
+  //   margin-top: 58px !important;
+  // }
+
 }

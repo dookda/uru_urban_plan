@@ -109,16 +109,6 @@ export class HomePage {
       zIndex: 3
     });
 
-
-    const huadong_flood4326 = L.tileLayer.wms(url, {
-      layers: 'th:huadong_flood4326',
-      format: 'image/png',
-      transparent: true,
-      opacity: 0.5,
-      // CQL_FILTER: 'prov_code=63',
-      zIndex: 3
-    });
-
     const hd_flood2_2_4326 = L.tileLayer.wms(url, {
       layers: 'th:hd_flood2_2_4326',
       format: 'image/png',
@@ -168,10 +158,9 @@ export class HomePage {
 
     var imageBounds = [[17.6839909239999997, 99.9921335850000048], [17.7149772970000008, 100.0331209819999998]];
     const hs = L.imageOverlay(img, imageBounds, {
-      opacity: 0.6,
+      opacity: 1,
       zIndex: 5
     });
-
 
     // this.lyrGroup = {
     //   lyr: [
@@ -209,22 +198,13 @@ export class HomePage {
 
   async  getData(lat: number, lng: number) {
     await this.dataProvider.getFeature(lat, lng).then((res: any) => {
-
       if (res.totalFeatures > 0) {
-        const feature: FeatureObj = {
-          code: res.features[0].properties.code,
-          lat: lat,
-          lng: lng,
-          list: res.features[0].properties.list,
-          no: res.features[0].properties.no,
-          type: res.features[0].properties.type,
-          rmk: res.features[0].properties.rmk,
-          area: res.features[0].properties.area
-        }
-        this.gotoDesc(feature);
+        let dat = res.features[0].properties;
+        dat.lat = lat;
+        dat.lng = lng;
+        console.log(dat);
+        this.gotoDesc(dat);
       }
-      // console.log(feature)
-      // res.totalFeatures > 0 ? this.gotoDesc(feature) : console.log('no feature');
     })
   }
 
@@ -245,16 +225,9 @@ export class HomePage {
     let pos = [];
 
     this.platform.ready().then(() => {
-      let watch = this.geolocation.watchPosition();
-
-
-      watch.subscribe((res) => {
+      this.geolocation.getCurrentPosition().then((res: any) => {
         pos = [res.coords.latitude, res.coords.longitude];
-        // this.lat = res.coords.latitude;
-        // this.lon = res.coords.longitude;
-
         console.log(pos);
-
         this.removeMarker();
         // this.reportProvider.setLocation(this.lat, this.lon);
         this.map.setView(pos, 16);
@@ -270,6 +243,8 @@ export class HomePage {
           console.log(pos);
         });
       });
+    }).catch(error => {
+      console.log(error)
     })
   }
 
@@ -319,4 +294,5 @@ export interface FeatureObj {
   type?: string;
   rmk?: string;
   area?: number;
+  all?: any;
 }

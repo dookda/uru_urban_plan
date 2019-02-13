@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, ModalController } 
 import { CommentPage } from '../comment/comment';
 import { AdditionPage } from '../addition/addition';
 import { DataProvider } from '../../providers/data/data';
+import { ModelPage } from '../model/model';
 
 
 @IonicPage()
@@ -19,12 +20,16 @@ export class DescPage {
   public rmk: any;
   public type: any;
   public area: any;
+  public img: any;
 
   public feature: DataReport;
   public ucomment: string;
   public uname: string;
   public uphone: string;
 
+  public imgSet = [];
+  public da: number = -1;
+  public model: any;
 
   constructor(
     public navCtrl: NavController,
@@ -36,6 +41,7 @@ export class DescPage {
   }
 
   ionViewDidLoad() {
+    const imgUrl = './../../assets/imgs/';
     const fs = this.navParams.get('feature');
     this.code = fs.code;
     this.lat = fs.lat;
@@ -45,18 +51,40 @@ export class DescPage {
     this.type = fs.type;
     this.rmk = fs.rmk;
     this.area = fs.area;
-    // console.log(fs);
+    this.img = imgUrl + fs.pic_c.replace(/\s/g, "");
+    console.log(fs);
+    fs.pic_f1 !== null ? this.imgSet.push(fs.pic_f1.replace(/\s/g, "")) : void 0;
+    fs.pic_f2 !== null ? this.imgSet.push(fs.pic_f2.replace(/\s/g, "")) : void 0;
+    fs.pic_f3 !== null ? this.imgSet.push(fs.pic_f3.replace(/\s/g, "")) : void 0;
+    fs.pic_f4 !== null ? this.imgSet.push(fs.pic_f4.replace(/\s/g, "")) : void 0;
+    fs.pic_f5 !== null ? this.imgSet.push(fs.pic_f5.replace(/\s/g, "")) : void 0;
+    // console.log(this.imgSet)
+    this.changeImg();
+  }
+
+  changeImg() {
+    const imgUrl = './../../assets/imgs/';
+    // console.log(this.imgSet.length);
+    if (this.da < (this.imgSet.length - 1)) {
+      this.da += 1;
+      this.model = imgUrl + this.imgSet[this.da];
+    } else {
+      this.da = 0;
+      this.model = imgUrl + this.imgSet[this.da];
+    }
+    // console.log(this.da);
   }
 
   closeModal() {
     this.viewCtrl.dismiss();
-    console.log('close')
+    // console.log('close')
   }
 
   gotoComment() {
     const modal = this.modalCtrl.create(CommentPage);
     modal.present();
   }
+
 
   gotoAddition() {
     const modal = this.modalCtrl.create(AdditionPage);

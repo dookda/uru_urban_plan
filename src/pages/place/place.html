@@ -1,7 +1,9 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>comment</ion-title>
+  <ion-navbar color="primary">
+    <ion-title class='kanit-w'>
+      สถานที่สำคัญ
+    </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="closeModal()">
         <ion-icon name="close-circle"></ion-icon>
@@ -12,13 +14,19 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="kanit">
+  <ion-card>
+    <ion-card-header>
+      <ion-label color="primary">
+        <p class="kanit-title">สถานที่สำคัญ</p>
+      </ion-label>
+    </ion-card-header>
+    <ion-list inset>
+      <button ion-item *ngFor="let p of places" (click)="placeSelected(p)">
+        {{ p.gid }} {{ p.name }} {{ p.no }}
+      </button>
+    </ion-list>
+  </ion-card>
 
-  <ion-list inset>
-    สถานที่สำคัญ
-    <button ion-item *ngFor="let p of places" (click)="placeSelected(p)">
-      {{ p.gid }} {{ p.name }} {{ p.no }}
-    </button>
-  </ion-list>
 
 </ion-content>
